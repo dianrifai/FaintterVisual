@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FaintterVisual — Poster Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="Logo sistem/Logo simbol faintter visual.png" alt="Logo" class="logo-img">
+            <div class="logo">FaintterVisual</div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="portfolio.html#portfolio" class="nav-link">Back to Portfolio</a></li>
+            <li><a href="portfolio.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="portfolio" style="padding-top:120px;">
+        <h2 class="section-title">Poster Design</h2>
+        <p class="section-subtitle">Koleksi desain poster untuk event, brand, dan kampanye promosi.</p>
+
+        <div class="gallery-grid" style="margin-top:2rem;">
+            <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/Poster Semarak Klagaran  (1).png')">
+                <img src="1. Poster/Poster Semarak Klagaran  (1).png" alt="Poster 1">
+                <figcaption> Desain poster untuk event HUT RI 80 Indonesia.</figcaption>
+            </figure>
+
+            <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/RECAPP KLAGARAN RW 18 (1).png')">
+                <img src="1. Poster/RECAPP KLAGARAN RW 18 (1).png" alt="Poster 2">
+                <figcaption>Desain poster recap kegiatan perayaan HUT RI 80 dikampung saya.</figcaption>
+            </figure>
+
+            <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/smwatch.png')">
+                <img src="1. Poster/smwatch.png" alt="Poster 3">
+                <figcaption>Desain poster branding produk smartwatch sport.</figcaption>
+            </figure>
+
+            <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/Design ID CARD KLAGARAN18.png')">
+                <img src="1. Poster/Design ID CARD KLAGARAN18.png" alt="Poster 4">
+                <figcaption>Desain ID Card aesthetic Karang Taruna Klagaran.</figcaption>
+            </figure>
+
+            <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/KIDSPRO GRAPHIC DESIGN.png')">
+                <img src="1. Poster/KIDSPRO GRAPHIC DESIGN.png" alt="Poster 5">
+                <figcaption>Desain poster edukatif dengan visual yang ceria Gapai Kids Center.</figcaption>
+            </figure>
+
+            <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/ELS 1 .png')">
+                <img src="1. Poster/ELS 1 .png" alt="Poster 6">
+                <figcaption>Desain poster edukatif dengan visual yang ceria Gapai Kids Center.</figcaption>
+            </figure>
+
+            
+            <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/RAFAEL STRUICK.jpg')">
+                <img src="1. Poster/RAFAEL STRUICK.jpg" alt="Poster 6">
+                <figcaption>Desain poster masking Adobe Photoshop.</figcaption>
+            </figure>
+
+            <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/BROSUR IP17 PRO.png')">
+                <img src="1. Poster/BROSUR IP17 PRO.png" alt="Poster 6">
+                <figcaption>Desain brosur brand produk.</figcaption>
+            </figure>
+
+             <figure class="gallery-card" onclick="openLightbox(event, 'image', '1. Poster/vans.jpg')">
+                <img src="1. Poster/vans.jpg" alt="Poster 6">
+                <figcaption>Desain poster clipping mask Adobe Photoshop.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 FaintterVisual — All Rights Reserved</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        function openLightbox(event, type, src) {
+            event.stopPropagation();
+            var lightbox = document.getElementById('lightbox');
+            var imgEl = document.getElementById('lightbox-img');
+            var videoEl = document.getElementById('lightbox-video');
+
+            if (type === 'video') {
+                imgEl.style.display = 'none';
+                if (!videoEl) {
+                    var videoContainer = document.createElement('video');
+                    videoContainer.id = 'lightbox-video';
+                    videoContainer.className = 'lightbox-img';
+                    videoContainer.style.cssText = 'display:block;width:100%;max-height:90vh;';
+                    videoContainer.controls = true;
+                    videoContainer.innerHTML = 'Your browser does not support the video tag.';
+                    lightbox.querySelector('.lightbox-content').appendChild(videoContainer);
+                    videoEl = document.getElementById('lightbox-video');
+                } else {
+                    videoEl.style.display = 'block';
+                }
+                videoEl.src = src;
+            } else {
+                if (videoEl) videoEl.style.display = 'none';
+                imgEl.style.display = 'block';
+                imgEl.src = src;
+            }
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox(event) {
+            if (event && event.target.id !== 'lightbox') return;
+            var lightbox = document.getElementById('lightbox');
+            var videoEl = document.getElementById('lightbox-video');
+            if (videoEl) videoEl.pause();
+            lightbox.classList.remove('active');
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+
+</body>
+</html>
