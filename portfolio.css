@@ -746,6 +746,21 @@ html {
     .nav-menu.active {
         left: 0;
     }
+
+    /* Ensure nav sits above content on mobile and links are touch-friendly */
+    .nav-menu {
+        z-index: 1500;
+    }
+
+    .nav-menu a {
+        font-size: 1.05rem;
+        padding: 0.75rem 0;
+        display: block;
+    }
+
+    .hamburger {
+        z-index: 1600;
+    }
     
     .hamburger {
         display: flex;
@@ -825,5 +840,39 @@ html {
     .portfolio,
     .contact {
         padding: 80px 3%;
+    }
+}
+
+/* CSS-only mobile nav toggle (checkbox-driven) */
+#nav-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* when checkbox is checked show nav */
+    #nav-toggle:checked ~ .nav-menu {
+        left: 0 !important;
+    }
+
+    /* animate hamburger (label) when toggled */
+    #nav-toggle:checked + .hamburger .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #nav-toggle:checked + .hamburger .bar:nth-child(2) {
+        opacity: 0;
+    }
+    #nav-toggle:checked + .hamburger .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* ensure label.hamburger is clickable area */
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        gap: 4px;
     }
 }
