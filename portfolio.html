@@ -219,28 +219,30 @@
     <section id="contact" class="contact">
         <h2 class="section-title">Contact Me?</h2>
         <div class="contact-container">
-            <form class="contact-form">
+            <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/xvgeqeqo">
+                <!-- Optional: add a redirect after successful submit by uncommenting and setting _next -->
+                <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html"> -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" placeholder="John">
+                        <input type="text" id="firstName" name="firstName" placeholder="Dian" required>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" placeholder="Doe">
+                        <input type="text" id="lastName" name="lastName" placeholder="Rifai">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="subject">Subject</label>
-                    <input type="text" id="subject" placeholder="Project Inquiry">
+                    <input type="text" id="subject" name="subject" placeholder="Project" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="john.doe@example.com">
+                    <input type="email" id="email" name="email" placeholder="rifai@example.com" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Your Message</label>
-                    <textarea id="message" placeholder="Tell me about your project..."></textarea>
+                    <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
                 </div>
                 <div class="contact-buttons">
                     <button type="submit" class="btn btn-primary">Send</button>
@@ -255,7 +257,6 @@
         <p>© 2025 FaintterVisual — All Rights Reserved</p>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="nav.js"></script>
+    <!-- No JS required for form submission: Form posts directly to Formspree -->
 </body>
 </html>
