@@ -173,8 +173,7 @@ html {
     color: #ffffff;
     font-size: 1.rem;
     font-weight: 600;
-    margin-bottom: 0.1rem;
-    text-decoration: underline;
+    margin-top: 6rem;
     text-decoration-color: rgba(255,255,255,0.9);
 }
 
@@ -733,18 +732,19 @@ html {
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        left: -100%;
+        right: -100%;
         top: 70px;
         flex-direction: column;
         background: rgba(10, 0, 20, 0.9);
-        width: 100%;
+        width: auto;
+        min-width: 200px;
         text-align: center;
         transition: 0.3s;
-        padding: 2rem 0;
+        padding: 1rem 1.5rem;
     }
     
     .nav-menu.active {
-        left: 0;
+        right: 0;
     }
 
     /* Ensure nav sits above content on mobile and links are touch-friendly */
@@ -851,7 +851,7 @@ html {
 @media (max-width: 768px) {
     /* when checkbox is checked show nav */
     #nav-toggle:checked ~ .nav-menu {
-        left: 0 !important;
+        right: 0 !important;
     }
 
     /* animate hamburger (label) when toggled */
