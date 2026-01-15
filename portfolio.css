@@ -676,6 +676,25 @@ html {
     gap: 1.5rem;
 }
 
+/* form message styles */
+.form-success,
+.form-error {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.form-success {
+    background: rgba(40, 167, 69, 0.12);
+    color: #d4f5d9;
+    border: 1px solid rgba(40,167,69,0.25);
+}
+.form-error {
+    background: rgba(220, 53, 69, 0.08);
+    color: #ffd6d9;
+    border: 1px solid rgba(220,53,69,0.18);
+}
+
 .form-row {
     display: flex;
     gap: 1rem;
