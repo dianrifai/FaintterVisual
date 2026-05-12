@@ -695,6 +695,27 @@ html::-webkit-scrollbar {
     color: #e0e0ff;
 }
 
+.experience-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.experience-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-item p {
+    color: #e0e0ff;
+}
+
 .skills-container {
     margin-top: 1.5rem;
 }
