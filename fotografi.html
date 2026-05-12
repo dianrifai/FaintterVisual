@@ -226,6 +226,44 @@
                 closeLightbox();
             }
         });
+
+        // Lazy Loading Implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            var images = document.querySelectorAll('img[src]:not([loading="eager"])');
+            var videos = document.querySelectorAll('video[src]:not([loading="eager"])');
+            
+            if ('IntersectionObserver' in window) {
+                var lazyLoadObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            var el = entry.target;
+                            if (el.tagName === 'IMG') {
+                                el.src = el.dataset.src || el.src;
+                                el.loading = 'eager';
+                            } else if (el.tagName === 'VIDEO') {
+                                el.src = el.dataset.src || el.src;
+                            }
+                            observer.unobserve(el);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px',
+                    threshold: 0.01
+                });
+                
+                images.forEach(function(img) {
+                    img.loading = 'lazy';
+                    lazyLoadObserver.observe(img);
+                });
+                videos.forEach(function(video) {
+                    lazyLoadObserver.observe(video);
+                });
+            } else {
+                images.forEach(function(img) {
+                    img.loading = 'lazy';
+                });
+            }
+        });
     </script>
 </body>
 </html>

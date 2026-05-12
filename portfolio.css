@@ -1,4 +1,4 @@
-ad* {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,7 +13,8 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    animation: gradientShift 20s ease-in-out infinite;
+    animation: gradientShift 30s ease-in-out infinite;
+    will-change: background-position;
 }
 
 @keyframes gradientShift {
@@ -113,8 +114,9 @@ html::-webkit-scrollbar {
     font-weight: 500;
     font-size: 0.95rem;
     white-space: nowrap;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
     position: relative;
+    will-change: color, transform;
 }
 
 .nav-link:hover {
@@ -178,11 +180,14 @@ html::-webkit-scrollbar {
     min-height: 100vh;
     padding: 0 5%;
     position: relative;
+    will-change: transform, opacity;
+    transform: translate3d(0,0,0);
 }
 
 .hero-content {
     flex: 1;
     padding-right: 2rem;
+    will-change: transform, opacity;
 }
 
 .hero-title {
@@ -204,7 +209,7 @@ html::-webkit-scrollbar {
 /* Hero name shown above the main title */
 .hero-name {
     color: #ffffff;
-    font-size: 1.rem;
+    font-size: 1rem;
     font-weight: 600;
     margin-top: 6rem;
     text-decoration-color: rgba(255,255,255,0.9);
@@ -235,9 +240,12 @@ html::-webkit-scrollbar {
                 0 8px 32px rgba(139, 92, 246, 0.10), 
                 inset 0 1px 2px rgba(255, 255, 255, 0.10);
     padding: 2px;
-    animation: glassFloat 6s ease-in-out infinite;
+    animation: glassFloat 8s ease-in-out infinite;
     overflow: hidden;
     filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.15));
+    transform: translate3d(0,0,0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 /* Animated shimmer ring */
@@ -346,10 +354,11 @@ html::-webkit-scrollbar {
     border-radius: 30px;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     display: inline-block;
     border: none;
     cursor: pointer;
+    will-change: transform, box-shadow, background;
 }
 
 .btn-primary {
@@ -395,10 +404,11 @@ html::-webkit-scrollbar {
     align-items: center;
     color: #fff;
     font-size: 1.2rem;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(139, 92, 246, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.08);
+    will-change: transform, background, box-shadow;
 }
 
 .social-icon:hover {
@@ -774,7 +784,7 @@ html::-webkit-scrollbar {
 
 .portfolio-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.005), rgba(139, 92, 246, 0.015));
-    backdrop-filter: blur(40px) saturate(220%);
+    backdrop-filter: blur(30px) saturate(220%);
     border-radius: 15px;
     overflow: hidden;
     border: 1.5px solid rgba(255, 255, 255, 0.2);
@@ -784,11 +794,14 @@ html::-webkit-scrollbar {
                 inset 0 2px 4px rgba(255, 255, 255, 0.3), 
                 inset 0 -2px 4px rgba(0, 0, 0, 0.1),
                 0 0 1px rgba(139, 92, 246, 0.1);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translate3d(0,0,0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .portfolio-card:hover {
-    transform: translateY(-10px);
+    transform: translate3d(0, -10px, 0);
     box-shadow: 0 16px 45px rgba(139, 92, 246, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.12);
 }
 
@@ -945,6 +958,24 @@ html::-webkit-scrollbar {
 
 /* Responsive */
 @media (max-width: 768px) {
+    body {
+        animation: none;
+        background-size: cover;
+    }
+
+    .profile-glass-wrapper {
+        animation: none;
+        backdrop-filter: blur(8px);
+        filter: none;
+    }
+
+    .about-card,
+    .contact-container,
+    .portfolio-card,
+    .nav-menu {
+        backdrop-filter: blur(20px) saturate(220%);
+    }
+
     .nav-menu {
         position: fixed;
         right: -100%;
@@ -955,7 +986,7 @@ html::-webkit-scrollbar {
         width: auto;
         min-width: 140px;
         text-align: center;
-        transition: 0.3s;
+        transition: right 0.3s ease;
         padding: 0.7rem 1rem;
         border: 1.5px solid rgba(255, 255, 255, 0.2);
         border-radius: 15px 0 0 15px;
@@ -1116,5 +1147,28 @@ html::-webkit-scrollbar {
         cursor: pointer;
         gap: 4px;
         margin-right: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    body,
+    .profile-glass-wrapper,
+    .profile-glass-wrapper::before,
+    .profile-glass-wrapper::after,
+    .hero,
+    .portfolio-card,
+    .gallery-card,
+    .nav-menu,
+    .btn,
+    .social-icon,
+    .lightbox,
+    .contact-container,
+    .about-card {
+        animation: none !important;
+        transition: none !important;
     }
 }
