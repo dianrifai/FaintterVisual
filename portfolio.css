@@ -720,38 +720,31 @@ html::-webkit-scrollbar {
     margin-top: 1.5rem;
 }
 
-.skill-item {
+.skill-category {
     margin-bottom: 1.5rem;
 }
 
-.skill-header {
-    display: flex;
-    justify-content: space-between;
+.skill-category h4 {
+    color: #8b5cf6;
     margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
-.skill-name {
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-category li {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #e0e0ff;
 }
 
-.skill-name i {
+.skill-category li i {
     color: #8b5cf6;
-}
-
-.skill-bar {
-    height: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.skill-progress {
-    height: 100%;
-    border-radius: 5px;
-    background: linear-gradient(45deg, #8b5cf6, #3b82f6);
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 
 /* Portfolio Section */
